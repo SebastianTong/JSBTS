@@ -27,3 +27,4 @@ function foo() {
 
 foo(); // this returned the variable age 33 because its inside the variable object of the function context box.
 console.log(age); // this returned age 24 because its declared in the variable object of the global context box.
+
