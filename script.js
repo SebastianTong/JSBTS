@@ -1,43 +1,36 @@
-///////////////////////////////////////
-// Lecture: Scoping
+//Lecture: 'This' Keyword.
 
+/*
+calculateAge(1994);
 
-// First scoping example
+function calculateAge(year) {
+    console.log(2018 - year);
+    console.log(this);
+}
 
+*/
 
-var a = 'Hello!';
-first();
-
-function first() {
-    var b = 'Hi!';
-    second();
-
-    function second() {
-        var c = 'Hey!';
-        console.log(a + b + c);
+var seba = {
+    name: 'Sebastian',
+    lastName: 'Tong',
+    yearOfBirth: 1994,
+    calculateAge: function(){
+        console.log(this);
+        console.log(2018 - this.yearOfBirth);
+        // function innerFunction(){
+        //     console.log(this);
+        // }
+        // innerFunction();
     }
+
 }
 
+seba.calculateAge();
 
+var mike = {
+    name: 'Mike',
+    yearOfBirth: 1993,
+};
 
-
-// Example to show the differece between execution stack and scope chain
-
-
-var a = 'Hello!';
-first();
-
-function first() {
-    var b = 'Hi!';
-    second();
-
-    function second() {
-        var c = 'Hey!';
-        third()
-    }
-}
-
-function third() {
-    var d = 'John';
-    console.log(a + b + c + d);
-}
+mike.calculateAge = seba.calculateAge;
+mike.calculateAge();
