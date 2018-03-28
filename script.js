@@ -1,30 +1,43 @@
 ///////////////////////////////////////
-// Lecture: Hoisting
+// Lecture: Scoping
 
-// Functions
 
-calculateAge(1994);
+// First scoping example
 
-function calculateAge(year) {
-    console.log(2018 - year);
+
+var a = 'Hello!';
+first();
+
+function first() {
+    var b = 'Hi!';
+    second();
+
+    function second() {
+        var c = 'Hey!';
+        console.log(a + b + c);
+    }
 }
 
-// retirement(1994);  this wont work because hoisting is only for function declarations and not expressions.
 
-var retirement = function(year){
-    console.log(65 - (2018 - year));
+
+
+// Example to show the differece between execution stack and scope chain
+
+
+var a = 'Hello!';
+first();
+
+function first() {
+    var b = 'Hi!';
+    second();
+
+    function second() {
+        var c = 'Hey!';
+        third()
+    }
 }
 
-//Variables
-
-console.log(age); // Js knows there is a variable declaration but doesnt know the value yet because it reads line by line.
-var age = 24; //if we delete this line, then there is no declaration and js will return an error.
-
-function foo() {
-    var age = 33;
-    console.log(age);
+function third() {
+    var d = 'John';
+    console.log(a + b + c + d);
 }
-
-foo(); // this returned the variable age 33 because its inside the variable object of the function context box.
-console.log(age); // this returned age 24 because its declared in the variable object of the global context box.
-
